@@ -30,10 +30,6 @@ ChartJS.register(ArcElement, CategoryScale, LinearScale, BarElement, Tooltip);
 ChartJS.defaults.elements.arc.borderWidth = 8;
 ChartJS.defaults.elements.arc.spacing = 0;
 
-const barOptions = {
-  responsive: true,
-};
-
 const barLabels = [
   "Sep 10",
   "Sep 11",
@@ -50,15 +46,11 @@ const barData = {
     {
       data: [90, 40, 65, 20, 80, 40, 80],
       backgroundColor: "hsl(230, 85%, 64%)",
+      barThickness: 13,
+      borderRadius: 50
     },
   ],
-  options: {
-    elements: {
-      bar: {
-        width: 13,
-      },
-    },
-  },
+  options: {},
 };
 
 const doughnutData = {
@@ -305,7 +297,12 @@ export default function Home() {
                 </div>
               </div>
               <div className="mt-4">
-                <Bar options={barOptions} data={barData} />
+                <Bar
+                  options={{
+                    responsive: true,
+                  }}
+                  data={barData}
+                />
               </div>
             </div>
           </div>
