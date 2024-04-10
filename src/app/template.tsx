@@ -13,15 +13,15 @@ import { OrdersIcon } from "@/components/icons/orders-icon";
 import { SettingsIcon } from "@/components/icons/settings-icon";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useResponsive } from "@/lib/hooks/use-responsive";
 import useWindowSize from "@/lib/hooks/use-window-size";
 import { ROUTES } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { BsArrowBarLeft, BsArrowBarRight } from "react-icons/bs";
+import { GoHomeFill } from "react-icons/go";
 import { RxCaretDown, RxCaretRight } from "react-icons/rx";
 
 const Template = ({ children }: { children: ReactNode }) => {
@@ -246,7 +246,19 @@ const Template = ({ children }: { children: ReactNode }) => {
             </div>
           </div>
         </div>
-        <div className="pl-[21px]"></div>
+        <div className="pl-[21px] flex px-[19px] items-center space-x-3 text-gray-text text-sm">
+          <Link href={ROUTES.DASHBOARD.path} className='text-primary'>
+            <GoHomeFill size={16} />
+          </Link>
+          {currentRoute?.path !== ROUTES.DASHBOARD.path ? (
+            <>
+              <span>/</span>
+              <Link href={currentRoute?.path ?? ROUTES.DASHBOARD.path}>
+                {currentRoute?.title}
+              </Link>
+            </>
+          ) : null}
+        </div>
         <ScrollArea className="bg-[hsla(230,33%,97%,1)] grow px-[19px] pt-[28px] pb-5 flex flex-col overflow-y-auto">
           {children}
         </ScrollArea>
