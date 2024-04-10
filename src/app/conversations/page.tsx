@@ -2,11 +2,13 @@ import { OrdersIcon } from "@/components/icons/orders-icon";
 import { SendIcon } from "@/components/icons/send-icon";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { SearchIcon } from "lucide-react";
 import Image from "next/image";
 import React, { Fragment } from "react";
 import { BsEmojiSmile } from "react-icons/bs";
 import { FaCheck, FaPlus } from "react-icons/fa";
+import { HiViewList } from "react-icons/hi";
 
 const Conversations = () => {
   return (
@@ -15,69 +17,25 @@ const Conversations = () => {
         <p className="font-medium">Conversations with Customers</p>
         <Button>New Message</Button>
       </div>
-      <div className="w-full grid grid-cols-[411px_1fr] gap-[19px] mt-5">
-        <div className="rounded-lg bg-white pt-[22px]">
-          <div className="w-full px-6">
-            <div className="flex w-full items-center justify-between mb-4">
-              <p className="text-xl font-medium">Contacts</p>
-              <p className="text-xl font-medium text-gray">34</p>
-            </div>
-            <div className="w-full relative">
-              <div className="absolute flex space-x-2 items-center left-0 top-0 bottom-0 w-auto px-4">
-                <Button
-                  type="submit"
-                  title="submit"
-                  className="text-primary-black w-5 h-5 p-0 bg-transparent focus:bg-transparent active:bg-transparent hover:bg-transparent"
-                >
-                  <SearchIcon />
-                </Button>
-              </div>
-              <Input
-                type="text"
-                name="search"
-                id="search"
-                placeholder="Search"
-                className="placeholder:text-[hsla(202,4%,68%,1)] pl-[52px] text-sm h-[45px] rounded-lg w-full pr-4"
-                autoComplete={"off"}
-              />
-            </div>
-
-            <div className="mt-5">
-              {Array.from({ length: 5 }).map((item, index) => {
-                return (
-                  <Fragment key={index}>
-                    <div className="flex py-4 border-b">
-                      <div className="relative">
-                        <Image
-                          src={"/assets/images/user-image.png"}
-                          width={48}
-                          height={48}
-                          alt="user-image"
-                          className="rounded-lg"
-                        />
-                        <div className="absolute w-2 h-2 rounded-full border-2 border-white right-0 top-0 bg-primary"></div>
-                      </div>
-                      <div className="ml-2 flex flex-col justify-between grow">
-                        <p className="font-medium">Jane Doe</p>
-                        <p className="text-sm text-gray-text line-clamp-1 text-ellipsis">
-                          Hi, i want make enquiries about yo...
-                        </p>
-                      </div>
-                      <div className="flex flex-col justify-between ml-2.5 items-end">
-                        <span className="rounded-full w-10 h-[19px] grid text-xs place-items-center bg-yellow-accent text-[hsla(230,9%,12%,1)]">
-                          New
-                        </span>
-                        <span className="text-gray-text text-xs">12:55 am</span>
-                      </div>
-                    </div>
-                  </Fragment>
-                );
-              })}
-            </div>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button variant='ghost' className='rounded-lg h-auto py-2.5 lg:hidden'>
+            <HiViewList />
+            <span className="ml-2.5 text-sm">View Contacts</span>
+          </Button>
+        </SheetTrigger>
+        <SheetContent side={"left"} className='px-2 pt-8'>
+          <div className="pb-3">
+            <Contacts />
           </div>
+        </SheetContent>
+      </Sheet>
+      <div className="w-full flex gap-[19px] mt-5">
+        <div className="rounded-lg bg-white pt-[22px] w-[411px] min-w-[411px] shrink-0 hidden lg:block">
+          <Contacts />
         </div>
 
-        <div className="rounded-lg bg-white">
+        <div className="rounded-lg bg-white grow">
           <div className="flex border-b px-[22px] py-4">
             <Image
               src={"/assets/images/user-image.png"}
@@ -187,7 +145,7 @@ const Conversations = () => {
                   title="submit"
                   className="text-primary-black w-6 h-6 p-0 bg-[hsla(32,100%,94%,1)] rounded-lg"
                 >
-                  <FaPlus className="text-[hsla(230,9%,12%,1)]" size={12}/>
+                  <FaPlus className="text-[hsla(230,9%,12%,1)]" size={12} />
                 </Button>
               </div>
               <Input
@@ -206,7 +164,7 @@ const Conversations = () => {
                   className="text-primary-black p-0 bg-[hsla(32,100%,94%,1)] rounded-md px-4 h-9 text-base"
                 >
                   Send
-                  <SendIcon className='ml-2'/>
+                  <SendIcon className="ml-2" />
                 </Button>
               </div>
             </div>
@@ -214,6 +172,69 @@ const Conversations = () => {
         </div>
       </div>
     </>
+  );
+};
+
+const Contacts = () => {
+  return (
+    <div className="w-full px-2 lg:px-6">
+      <div className="flex w-full items-center justify-between mb-4">
+        <p className="text-xl font-medium">Contacts</p>
+        <p className="text-xl font-medium text-gray">34</p>
+      </div>
+      <div className="w-full relative">
+        <div className="absolute flex space-x-2 items-center left-0 top-0 bottom-0 w-auto px-4">
+          <Button
+            type="submit"
+            title="submit"
+            className="text-primary-black w-5 h-5 p-0 bg-transparent focus:bg-transparent active:bg-transparent hover:bg-transparent"
+          >
+            <SearchIcon />
+          </Button>
+        </div>
+        <Input
+          type="text"
+          name="search"
+          id="search"
+          placeholder="Search"
+          className="placeholder:text-[hsla(202,4%,68%,1)] pl-[52px] text-sm h-[45px] rounded-lg w-full pr-4"
+          autoComplete={"off"}
+        />
+      </div>
+
+      <div className="mt-5">
+        {Array.from({ length: 5 }).map((item, index) => {
+          return (
+            <Fragment key={index}>
+              <div className="flex py-4 border-b">
+                <div className="relative">
+                  <Image
+                    src={"/assets/images/user-image.png"}
+                    width={48}
+                    height={48}
+                    alt="user-image"
+                    className="rounded-lg"
+                  />
+                  <div className="absolute w-2 h-2 rounded-full border-2 border-white right-0 top-0 bg-primary"></div>
+                </div>
+                <div className="ml-2 flex flex-col justify-between grow">
+                  <p className="font-medium">Jane Doe</p>
+                  <p className="text-sm text-gray-text line-clamp-1 text-ellipsis">
+                    Hi, i want make enquiries about yo...
+                  </p>
+                </div>
+                <div className="flex flex-col justify-between ml-2.5 shrink-0 items-end">
+                  <span className="rounded-full w-10 h-[19px] grid text-xs place-items-center bg-yellow-accent text-[hsla(230,9%,12%,1)]">
+                    New
+                  </span>
+                  <span className="text-gray-text text-xs">12:55 am</span>
+                </div>
+              </div>
+            </Fragment>
+          );
+        })}
+      </div>
+    </div>
   );
 };
 
