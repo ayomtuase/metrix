@@ -5,7 +5,13 @@ import { CustomersIcon } from "@/components/icons/customers-icon";
 import { FolderIcon } from "@/components/icons/folder-icon";
 import { OrdersIcon } from "@/components/icons/orders-icon";
 import { SalesChartIcon } from "@/components/icons/sales-chart-icon";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import {
   ArcElement,
   BarElement,
@@ -15,7 +21,7 @@ import {
   Tooltip,
 } from "chart.js";
 import Image from "next/image";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Bar, Doughnut } from "react-chartjs-2";
 import { RxCaretDown } from "react-icons/rx";
 
@@ -90,8 +96,7 @@ export default function Home() {
               <SalesChartIcon />
             </span>
             <div className="flex space-x-[7px] text-[hsla(230,10%,77%,1)] group-hover:text-white">
-              <span className="text-xs">This Week</span>
-              <RxCaretDown />
+              <TimePicker />
             </div>
           </div>
           <div className="flex items-center group-hover:text-white mt-3">
@@ -120,8 +125,7 @@ export default function Home() {
               <CustomersIcon />
             </span>
             <div className="flex space-x-[7px] text-[hsla(230,10%,77%,1)] group-hover:text-white">
-              <span className="text-xs">This Week</span>
-              <RxCaretDown />
+              <TimePicker />
             </div>
           </div>
           <div className="flex items-center group-hover:text-white mt-3">
@@ -155,8 +159,7 @@ export default function Home() {
               <OrdersIcon />
             </span>
             <div className="flex space-x-[7px] text-[hsla(230,10%,77%,1)] group-hover:text-white">
-              <span className="text-xs">This Week</span>
-              <RxCaretDown />
+              <TimePicker />
             </div>
           </div>
           <div className="flex items-center group-hover:text-white mt-3">
@@ -190,8 +193,7 @@ export default function Home() {
                 <div className="flex items-center justify-between">
                   <p>Marketing</p>
                   <div className="flex space-x-[7px]">
-                    <span className="text-xs">This Week</span>
-                    <RxCaretDown />
+                    <TimePicker />
                   </div>
                 </div>
                 <div className="flex justify-between mt-3">
@@ -368,3 +370,30 @@ export default function Home() {
     </>
   );
 }
+
+const TimePicker = () => {
+  const [time, setTime] = useState("This Week");
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        <span className="flex space-x-2 px-3 py-2 items-center">
+          <span className="text-xs">{time}</span>
+          <RxCaretDown />
+        </span>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        {["Today", "This Week", "This Month", "This Year"].map((time) => {
+          return (
+            <DropdownMenuItem
+              key={time}
+              className={cn()}
+              onClick={() => setTime(time)}
+            >
+              {time}
+            </DropdownMenuItem>
+          );
+        })}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+};

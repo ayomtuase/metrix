@@ -246,7 +246,7 @@ const Template = ({ children }: { children: ReactNode }) => {
             </div>
           </div>
         </div>
-        <div className="pl-[21px] flex px-[19px] items-center space-x-3 text-gray-text text-sm">
+        <div className="pl-[21px] flex px-[19px] items-center space-x-3 text-gray-text text-sm border-t">
           <Link href={ROUTES.DASHBOARD.path} className='text-primary'>
             <GoHomeFill size={16} />
           </Link>
