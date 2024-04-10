@@ -19,12 +19,15 @@ const Conversations = () => {
       </div>
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant='ghost' className='rounded-lg h-auto py-2.5 lg:hidden'>
+          <Button
+            variant="ghost"
+            className="rounded-lg h-auto py-2.5 lg:hidden mt-2.5"
+          >
             <HiViewList />
             <span className="ml-2.5 text-sm">View Contacts</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side={"left"} className='px-2 pt-8'>
+        <SheetContent side={"left"} className="px-2 pt-8">
           <div className="pb-3">
             <Contacts />
           </div>
@@ -36,18 +39,18 @@ const Conversations = () => {
         </div>
 
         <div className="rounded-lg bg-white grow">
-          <div className="flex border-b px-[22px] py-4">
-            <Image
-              src={"/assets/images/user-image.png"}
-              width={60}
-              height={60}
-              alt="user-image"
-              className="rounded-lg object-cover"
-            />
-            <div className="grow flex justify-between ml-2">
-              <div className="flex flex-col justify-between">
+          <div className="flex flex-col md:flex-row border-b px-[22px] py-4 justify-between">
+            <div className="flex items-stretch">
+              <Image
+                src={"/assets/images/user-image.png"}
+                width={60}
+                height={60}
+                alt="user-image"
+                className="rounded-lg object-cover"
+              />
+              <div className="flex flex-col justify-between ml-2 h-full">
                 <p className="font-medium">Jane Doe</p>
-                <div className="flex items-center">
+                <div className="flex items-center mt-2">
                   <span className="w-3 h-3 rounded-full bg-primary"></span>
                   <span className="hsla(230,51%,81%,1) text-sm ml-1">
                     Online
@@ -55,30 +58,30 @@ const Conversations = () => {
                   <span className="text-sm ml-2 text-gray-text">12:55 am</span>
                 </div>
               </div>
-              <div className="flex flex-col justify-between items-end">
-                <div className="flex items-center space-x-3">
-                  <span className="rounded-full w-[99px] h-[19px] grid text-xs place-items-center bg-yellow-accent text-[hsla(230,9%,12%,1)]">
-                    New Customer
-                  </span>
-                  <Button variant="link" className="px-0 py-0 h-auto">
-                    View Profile
-                  </Button>
-                </div>
-                <div className="flex items-center">
-                  <OrdersIcon className="text-[hsla(230,5%,34%,1)]" />
-                  <span className="ml-2 text-gray">0 Orders</span>
-                </div>
+            </div>
+            <div className="flex flex-col justify-between items-start md:items-end mt-2 md:mt-0">
+              <div className="flex items-center space-x-3">
+                <span className="rounded-full w-[99px] h-[19px] grid text-xs place-items-center bg-yellow-accent text-[hsla(230,9%,12%,1)]">
+                  New Customer
+                </span>
+                <Button variant="link" className="px-0 py-0 h-auto">
+                  View Profile
+                </Button>
+              </div>
+              <div className="flex items-center mt-2 md:mt-0">
+                <OrdersIcon className="text-[hsla(230,5%,34%,1)]" />
+                <span className="ml-2 text-gray">0 Orders</span>
               </div>
             </div>
           </div>
-          <div className="pl-[30px] pr-[21px] pb-5">
+          <div className="px-3 md:pl-[30px] md:pr-[21px] pb-5">
             <div className="flex justify-center mt-5">
               <span className="rounded-full py-2 px-3 bg-[hsla(230,33%,97%,1)] text-[hsla(230,9%,12%,1)]">
                 12 August 2022
               </span>
             </div>
 
-            <div className="flex flex-col items-start mt-5 w-[350px] min-w-[350px] max-w-[350px]">
+            <div className="flex flex-col items-start mt-5  max-w-full">
               <div className="flex w-full py-2 border-b">
                 <Image
                   src="/assets/images/iphone-1.png"
@@ -97,13 +100,13 @@ const Conversations = () => {
                   </div>
                 </div>
               </div>
-              <div className="rounded-2xl bg-primary p-4 font-medium rounded-es-none mt-2 text-white">
+              <div className="rounded-2xl bg-primary p-2 md:p-4 text-sm md:text-lg font-medium rounded-es-none mt-2 text-white">
                 Hello, I want to make enquiries about your product
               </div>
               <p className="text-gray-text mt-2">12:55 am</p>
             </div>
-            <div className="flex flex-col w-full items-end mt-5">
-              <div className="rounded-2xl bg-[hsla(32,100%,91%,1)] text-center p-4 font-medium rounded-ee-none mt-2">
+            <div className="flex flex-col w-full items-end text-end mt-5">
+              <div className="rounded-2xl bg-[hsla(32,100%,91%,1)] text-end p-2 md:p-4 text-sm md:text-lg font-medium rounded-ee-none mt-2">
                 Hello Janet, thank you for reaching out
               </div>
               <p className="text-gray-text mt-2 flex items-center">
@@ -113,8 +116,8 @@ const Conversations = () => {
                 </span>
               </p>
             </div>
-            <div className="flex flex-col w-full items-end mt-5">
-              <div className="rounded-2xl bg-[hsla(32,100%,91%,1)] text-[hsla(230,9%,12%,1)] p-4 font-medium rounded-ee-none mt-2">
+            <div className="flex flex-col w-full items-end text-end mt-5">
+              <div className="rounded-2xl bg-[hsla(32,100%,91%,1)] text-[hsla(230,9%,12%,1)] p-2 md:p-4 text-sm md:text-lg font-medium rounded-ee-none mt-2">
                 What do you need to know?
               </div>
               <p className="text-gray-text mt-2 flex items-center">
@@ -131,15 +134,15 @@ const Conversations = () => {
               </span>
             </div>
 
-            <div className="flex flex-col items-start mt-5 w-[350px] min-w-[350px] max-w-[350px]">
-              <div className="rounded-2xl bg-primary p-4 font-medium rounded-es-none mt-2 text-white">
+            <div className="flex flex-col items-start mt-5 max-w-full">
+              <div className="rounded-2xl bg-primary p-2 md:p-4 text-sm md:text-lg font-medium rounded-es-none mt-2 text-white">
                 I want to know if the price is negotiable, i need about 2 Units
               </div>
               <p className="text-gray-text mt-2">12:55 am</p>
             </div>
 
             <div className="w-full relative mt-3.5">
-              <div className="absolute flex space-x-2 items-center left-0 top-0 bottom-0 w-auto pl-4 pr-5">
+              <div className="absolute flex space-x-2 items-center left-0 top-0 bottom-0 w-auto pl-2 md:pl-4 pr-5">
                 <Button
                   type="submit"
                   title="submit"
@@ -153,7 +156,7 @@ const Conversations = () => {
                 name="search"
                 id="search"
                 placeholder="Your message"
-                className="placeholder:text-[hsla(202,4%,68%,1)] pl-[63px] text-sm h-[51px] rounded-lg w-full pr-[167px]"
+                className="placeholder:text-[hsla(202,4%,68%,1)] pl-[40px] md:pl-[63px] text-sm h-[51px] rounded-lg w-full pr-[84px] md:pr-[167px]"
                 autoComplete={"off"}
               />
               <div className="absolute flex space-x-3 items-center right-0 top-0 bottom-0 w-auto px-4">
@@ -161,10 +164,10 @@ const Conversations = () => {
                 <Button
                   type="submit"
                   title="submit"
-                  className="text-primary-black p-0 bg-[hsla(32,100%,94%,1)] rounded-md px-4 h-9 text-base"
+                  className="text-primary-black bg-[hsla(32,100%,94%,1)] rounded-md px-2 md:px-4 h-9 text-base"
                 >
-                  Send
-                  <SendIcon className="ml-2" />
+                  <span className="hidden md:inline">Send</span>
+                  <SendIcon className="md:ml-2" />
                 </Button>
               </div>
             </div>
