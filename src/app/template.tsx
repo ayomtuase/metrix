@@ -130,7 +130,14 @@ const Template = ({ children }: { children: ReactNode }) => {
                         }
                       }}
                     >
-                      <Icon className="shrink-0" />
+                      <div className="relative">
+                        <Icon className="shrink-0" />
+                        {!showFullItem && count ? (
+                          <span className="w-6 h-6 absolute -top-3 -right-3 grid place-items-center text-xs rounded-full text-[hsla(230,9%,12%,1)] bg-yellow">
+                            {count}
+                          </span>
+                        ) : null}
+                      </div>
                       {showFullItem ? (
                         <div className="flex items-center ml-4 space-x-3">
                           <span
@@ -247,7 +254,7 @@ const Template = ({ children }: { children: ReactNode }) => {
           </div>
         </div>
         <div className="pl-[21px] flex px-[19px] items-center space-x-3 text-gray-text text-sm border-t">
-          <Link href={ROUTES.DASHBOARD.path} className='text-primary'>
+          <Link href={ROUTES.DASHBOARD.path} className="text-primary">
             <GoHomeFill size={16} />
           </Link>
           {currentRoute?.path !== ROUTES.DASHBOARD.path ? (

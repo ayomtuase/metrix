@@ -192,7 +192,7 @@ export default function Home() {
               <div className="col-span-1 row-span-2 transition rounded-lg bg-white px-[15px] py-[11px]">
                 <div className="flex items-center justify-between">
                   <p>Marketing</p>
-                  <div className="flex space-x-[7px]">
+                  <div className="flex space-x-[7px] text-[hsla(230,10%,77%,1)] group-hover:text-white">
                     <TimePicker />
                   </div>
                 </div>
