@@ -187,7 +187,7 @@ const Conversations = () => {
                   title="submit"
                   className="text-primary-black w-6 h-6 p-0 bg-[hsla(32,100%,94%,1)] rounded-lg"
                 >
-                  <FaPlus className="text-[hsla(230,9%,12%,1)]" size={14}/>
+                  <FaPlus className="text-[hsla(230,9%,12%,1)]" size={12}/>
                 </Button>
               </div>
               <Input
@@ -206,7 +206,7 @@ const Conversations = () => {
                   className="text-primary-black p-0 bg-[hsla(32,100%,94%,1)] rounded-md px-4 h-9 text-base"
                 >
                   Send
-                  <SendIcon />
+                  <SendIcon className='ml-2'/>
                 </Button>
               </div>
             </div>

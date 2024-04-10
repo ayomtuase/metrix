@@ -74,113 +74,115 @@ const Template = ({ children }: { children: ReactNode }) => {
             ) : null}
           </Link>
 
-          <nav
-            className={cn(
-              "flex flex-col justify-between h-full space-y-3 mt-[40px] pb-4"
-            )}
-          >
-            <div className="flex flex-col">
-              {[
-                {
-                  Icon: DashboardIcon,
-                  text: "Dashboard",
-                  href: ROUTES.DASHBOARD.path,
-                },
-                {
-                  Icon: OrdersIcon,
-                  text: "Orders",
-                  href: ROUTES.ORDERS.path,
-                  count: 3,
-                },
-                {
-                  Icon: CustomersIcon,
-                  text: "Customers",
-                  href: ROUTES.CUSTOMERS.path,
-                },
-                {
-                  Icon: InventoryIcon,
-                  text: "Inventory",
-                  href: ROUTES.INVENTORY.path,
-                },
-                {
-                  Icon: ConversationsIcon,
-                  text: "Conversations",
-                  href: ROUTES.CONVERSATIONS.path,
-                  count: 16,
-                },
-                {
-                  Icon: SettingsIcon,
-                  text: "Settings",
-                  href: ROUTES.SETTINGS.path,
-                },
-              ].map(({ Icon, text, href, count }) => {
-                const isActive = currentPath === href;
-                return (
-                  <Link
-                    href={href}
-                    key={text}
-                    className={cn(
-                      "flex group items-center rounded-xl text-[hsla(230,5%,34%,1)] hover:bg-primary hover:text-white cursor-pointers px-3.5 py-3",
-                      isActive ? "text-white bg-primary" : ""
-                    )}
-                    onClick={() => {
-                      if (!allowFullNav) {
-                        closeSidebar();
-                      }
-                    }}
-                  >
-                    <Icon className="shrink-0" />
-                    {showFullItem ? (
-                      <div className="flex items-center ml-4 space-x-3">
-                        <span
-                          className={cn("text-sm", {
-                            "text-white": isActive,
-                          })}
-                        >
-                          {text}
-                        </span>
-                        {count ? (
-                          <span className="w-6 h-6 grid place-items-center text-xs rounded-full text-[hsla(230,9%,12%,1)] bg-yellow">
-                            {count}
+          <ScrollArea className="overflow-y-auto mt-5 lg:mt-8 grow">
+            <nav
+              className={cn(
+                "flex flex-col justify-between h-full space-y-3 pb-4"
+              )}
+            >
+              <div className="flex flex-col space-y-1">
+                {[
+                  {
+                    Icon: DashboardIcon,
+                    text: "Dashboard",
+                    href: ROUTES.DASHBOARD.path,
+                  },
+                  {
+                    Icon: OrdersIcon,
+                    text: "Orders",
+                    href: ROUTES.ORDERS.path,
+                    count: 3,
+                  },
+                  {
+                    Icon: CustomersIcon,
+                    text: "Customers",
+                    href: ROUTES.CUSTOMERS.path,
+                  },
+                  {
+                    Icon: InventoryIcon,
+                    text: "Inventory",
+                    href: ROUTES.INVENTORY.path,
+                  },
+                  {
+                    Icon: ConversationsIcon,
+                    text: "Conversations",
+                    href: ROUTES.CONVERSATIONS.path,
+                    count: 16,
+                  },
+                  {
+                    Icon: SettingsIcon,
+                    text: "Settings",
+                    href: ROUTES.SETTINGS.path,
+                  },
+                ].map(({ Icon, text, href, count }) => {
+                  const isActive = currentPath === href;
+                  return (
+                    <Link
+                      href={href}
+                      key={text}
+                      className={cn(
+                        "flex group items-center rounded-xl text-[hsla(230,5%,34%,1)] hover:bg-primary hover:text-white cursor-pointers px-3.5 py-3",
+                        isActive ? "text-white bg-primary" : ""
+                      )}
+                      onClick={() => {
+                        if (!allowFullNav) {
+                          closeSidebar();
+                        }
+                      }}
+                    >
+                      <Icon className="shrink-0" />
+                      {showFullItem ? (
+                        <div className="flex items-center ml-4 space-x-3">
+                          <span
+                            className={cn("text-sm", {
+                              "text-white": isActive,
+                            })}
+                          >
+                            {text}
                           </span>
-                        ) : null}
-                      </div>
-                    ) : null}
-                  </Link>
-                );
-              })}
-            </div>
-            <div className="flex flex-col space-y-3">
-              <div className="flex rounded-lg items-center space-x-4 px-3.5 py-3 bg-[hsla(202,4%,39%,0.1)]">
-                <ContactIcon />
-                {showFullItem ? (
-                  <span className="text-sm">Contact Support</span>
-                ) : null}
+                          {count ? (
+                            <span className="w-6 h-6 grid place-items-center text-xs rounded-full text-[hsla(230,9%,12%,1)] bg-yellow">
+                              {count}
+                            </span>
+                          ) : null}
+                        </div>
+                      ) : null}
+                    </Link>
+                  );
+                })}
               </div>
-              <div className="px-3.5 rounded-lg py-3 bg-[hsla(32,100%,78%,0.2)]">
-                <div className="flex space-x-4 items-center ">
-                  <GiftIcon className="shrink-0" />
+              <div className="flex flex-col space-y-3 mb-4 pb-4">
+                <div className="flex rounded-lg items-center space-x-4 px-3.5 py-3 bg-[hsla(202,4%,39%,0.1)]">
+                  <ContactIcon />
                   {showFullItem ? (
-                    <span className="text-sm">Free Gift Awaits You!</span>
+                    <span className="text-sm">Contact Support</span>
                   ) : null}
                 </div>
-                {showFullItem ? (
-                  <div className="flex items-center text-[hsla(230,5%,45%,1)] mt-2.5">
-                    <p className="text-xs">Upgrade your account</p>
-                    <RxCaretRight className="ml-4 shrink-0" size={16} />
+                <div className="px-3.5 rounded-lg py-3 bg-[hsla(32,100%,78%,0.2)]">
+                  <div className="flex space-x-4 items-center ">
+                    <GiftIcon className="shrink-0" />
+                    {showFullItem ? (
+                      <span className="text-sm">Free Gift Awaits You!</span>
+                    ) : null}
                   </div>
-                ) : null}
+                  {showFullItem ? (
+                    <div className="flex items-center text-[hsla(230,5%,45%,1)] mt-2.5">
+                      <p className="text-xs">Upgrade your account</p>
+                      <RxCaretRight className="ml-4 shrink-0" size={16} />
+                    </div>
+                  ) : null}
+                </div>
+                <div
+                  className={cn("space-x-4 flex text-[hsla(0,52%,59%,1)]", {
+                    "justify-center": !showFullItem,
+                  })}
+                >
+                  <LogoutIcon className="" />
+                  {showFullItem ? <span>Logout</span> : null}
+                </div>
               </div>
-              <div
-                className={cn("space-x-4 flex text-[hsla(0,52%,59%,1)]", {
-                  "justify-center": !showFullItem,
-                })}
-              >
-                <LogoutIcon className="" />
-                {showFullItem ? <span>Logout</span> : null}
-              </div>
-            </div>
-          </nav>
+            </nav>
+          </ScrollArea>
         </div>
         <Button
           onClick={() => setIsSidebarOpen((prev) => !prev)}
