@@ -244,7 +244,7 @@ const Template = ({ children }: { children: ReactNode }) => {
             </div>
           </div>
         </div>
-        <div className="pl-[21px]">stuff</div>
+        <div className="pl-[21px]"></div>
         <ScrollArea className="bg-[hsla(230,33%,97%,1)] grow px-[19px] pt-[28px] pb-5 flex flex-col overflow-y-auto">
           {children}
         </ScrollArea>
