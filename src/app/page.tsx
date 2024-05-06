@@ -63,7 +63,7 @@ const doughnutData = {
         "hsla(230, 68%, 76%, 1)",
       ],
       borderColor: "hsla(230, 55%, 96%, 1)",
-      borderWidth: 16,
+      // borderWidth: 16,
       // options: {
       //   elements: {
       //     arc: {
@@ -221,7 +221,7 @@ export default function Home() {
                       maintainAspectRatio: false,
                       datasets: {
                         doughnut: {
-                          borderWidth: 6,
+                          // borderWidth: 6,
                         },
                       },
                     }}
